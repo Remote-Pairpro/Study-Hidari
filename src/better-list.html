@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<script type="text/javascript" src="js/knockout-3.3.0.js"></script>
+	</head>
+	<body>
+		<form data-bind="submit: addItem">
+			新しいアイテム
+			<input type="text" data-bind='value: itemToAdd, valueUpdate: "afterkeydown"' />
+			<button type="submit" data-bind="enable: itemToAdd().length > 0">追加</button>
+		</form>
+		<h4>アイテム一覧</h4>
+		<select multiple="multiple" width="50"
+				data-bind="options: allItems, selectedOptions: selectedItems"> </select>
+		<div>
+			<button data-bind="click: removeSelected, enable: selectedItems().length > 0">削除</button>
+			<button data-bind="click: sortItems, enable: allItems().length > 1">ソート</button>
+		</div>
+		<script type="text/javascript" src="js/better-list.viewmodel.js"></script>
+	</body>
+</html>
