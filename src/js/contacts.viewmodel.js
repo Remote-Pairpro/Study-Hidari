@@ -1,0 +1,2 @@
+var initialData;
+var ContactsModel;
