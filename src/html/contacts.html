@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../js/knockout-3.3.0.js"></script>
+	</head>
+	<body>
+		<h2>連絡先</h2>
+        <div id='contactsList'>
+            <table class='contactsEditor'>
+                <thead>
+                    <tr>
+                        <th>ファーストネーム</th>
+                        <th>ラストネーム</th>
+                        <th>電話番号</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: contacts">
+                    <tr>
+                        <td>
+                            <input data-bind='value: firstName' />
+                            <div><a href='#' data-bind='click: $root.removeContact'>削除</a></div>
+                        </td>
+                        <td><input data-bind='value: lastName' /></td>
+                        <td>
+                            <table>
+                                <tbody data-bind="foreach: phones">
+                                    <tr>
+                                        <td><input data-bind='value: type' /></td>
+                                        <td><input data-bind='value: number' /></td>
+                                        <td><a href='#' data-bind='click: $root.removePhone'>削除</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href='#' data-bind='click: $root.addPhone'>電話番号を追加</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <p>
+            <button data-bind='click: addContact'>連絡先を追加</button>
+            <button data-bind='click: save, enable: contacts().length > 0'>JSON形式で保存</button>
+        </p>
+        
+        <textarea data-bind='value: lastSavedJson' rows='5' cols='60' disabled='disabled'> </textarea>
+
+		<script type="text/javascript" src="../js/contacts.viewmodel.js"></script>
+	</body>
+</html>
