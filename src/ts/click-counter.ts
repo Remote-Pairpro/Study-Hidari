@@ -1,18 +1,31 @@
 /// <reference path="tsd/typings/knockout/knockout.d.ts" />
-var ClickCounterViewModel = function() {
-    this.numberOfClicks = ko.observable(0);
- 
-    this.registerClick = function() {
-        this.numberOfClicks(this.numberOfClicks() + 1);
-    };
- 
-    this.resetClicks = function() {
+/**
+ * ClickCounter
+ */
+class ClickCounter {
+    constructor() {
+        this.numberOfClicks = ko.observable(0);
+        this.hasClickedTooManyTimes = ko.computed(function() {
+            return this.numberOfClicks() >= 5;
+        }, this);
+     }
+    public numberOfClicks : KnockoutObservable<number>;
+
+    /**
+     * registerClick
+     */
+    public registerClick():void{
+        this.numberOfClicks(this.numberOfClicks()+1);
+    }
+
+    /**
+     * resetClicks
+     */
+    public resetClicks() {
         this.numberOfClicks(0);
-    };
- 
-    this.hasClickedTooManyTimes = ko.computed(function() {
-        return this.numberOfClicks() >= 5;
-    }, this);
-};
- 
-ko.applyBindings(new ClickCounterViewModel());
+    }
+    
+    public hasClickedTooManyTimes : KnockoutComputed<any>;
+}
+// Knockout を起動します。
+ko.applyBindings(new ClickCounter());
