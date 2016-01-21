@@ -1,5 +1,41 @@
 /// <reference path="tsd/typings/knockout/knockout.d.ts" />
 
+/**
+ * Planets
+ */
+class PlanetsViewModel {
+    public planets: KnockoutObservableArray<{name:string, type:string}>;
+    public typeToShow: KnockoutObservable<string>;
+    public displayAdvancedOptions: KnockoutObservable<boolean>;
+    
+    constructor() {
+        this.planets = ko.observableArray([
+            { name: "水星", type: "rock"},
+            { name: "金星", type: "rock"},
+            { name: "地球", type: "rock"},
+            { name: "火星", type: "rock"},
+            { name: "木製", type: "gasgiant"},
+            { name: "土星", type: "gasgiant"},
+            { name: "天王星", type: "gasgiant"},
+            { name: "海王星", type: "gasgiant"},
+            { name: "冥王星", type: "rock"}
+        ]);
+        
+        this.typeToShow = ko.observable("all");
+        this.displayAdvancedOptions = ko.observable(false);
+    }
+    
+    /**
+     * addPlanet
+     */
+    public addPlanet(type: string):void {
+        this.planets.push({
+            name: "新惑星",
+            type: type
+        })
+    }
+}
+
 var PlanetsModel = function() {
     this.planets = ko.observableArray([
         { name: "水星", type: "rock"},
