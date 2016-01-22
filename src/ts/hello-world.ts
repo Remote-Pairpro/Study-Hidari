@@ -1,6 +1,6 @@
 /// <reference path="tsd/typings/knockout/knockout.d.ts" />
 // ViewModel を定義します
-class MyViewModel{
+class HelloWorldViewModel{
     public firstName:KnockoutObservable<string>;
     public lastName:KnockoutObservable<string>;
     public fullName:KnockoutComputed<string>;
@@ -13,5 +13,5 @@ class MyViewModel{
 }
 
 // 次のコードで Knockout を起動します。
-var viewModel = new MyViewModel("Hidari", "Ikw");
-ko.applyBindings(viewModel);
+var helloWorldViewModel = new HelloWorldViewModel("Hidari", "Ikw");
+ko.applyBindings(helloWorldViewModel);

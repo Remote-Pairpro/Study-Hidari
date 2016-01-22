@@ -1,4 +1,4 @@
-var viewModel = {
+var formPartsViewModel = {
     stringValue : ko.observable("こんにちわ"),
     passwordValue : ko.observable("hogehoge"),
     booleanValue : ko.observable(true),
@@ -7,4 +7,4 @@ var viewModel = {
     multipleSelectedOptionValues : ko.observable(["Alpha"]),
     radioSelectedOptionValue : ko.observable("Beta")
 };
-ko.applyBindings(viewModel);
+ko.applyBindings(formPartsViewModel);
