@@ -6,3 +6,4 @@ node_modules
 # transpiled js
 /**/src/ts/*.js
 /**/src/ts/*.js.map
+*.d.ts
