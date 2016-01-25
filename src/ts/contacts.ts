@@ -8,7 +8,27 @@ var initialData = [
             { type: "電話", number: "(555) 999-1212"}]
     }
 ];
- 
+
+
+/**
+ * ContactsViewmodel
+ */
+class ContactsViewmodel {
+    constructor() {
+        
+    }
+    
+    public contacts: KnockoutObservableArray<{firstName: any, lastName: any, phones: KnockoutObservableArray<{}>}[]>;
+    
+    /**
+     * addContact
+     */
+    public addContact() {
+        this.contacts.push({
+            firstName:"", lastName:"",phones:{}}[]);
+    }
+}
+
 var ContactsModel = function(contacts) {
     var self = this;
     self.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function(contact) {
