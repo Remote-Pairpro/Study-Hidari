@@ -35,7 +35,7 @@ class ContactsViewmodel {
         })
     }
     
-    public removeContact(contact):void{
+    public removeContact = (contact) => {
         this.contacts.remove(contact);
     }
     
@@ -46,7 +46,8 @@ class ContactsViewmodel {
         })
     }
     
-    public removePhone(phone):void{
+    // アロー関数にするとthisが維持される
+    public removePhone = (phone) => {
         $.each(this.contacts(), function() { this.phones.remove(phone) });
     }
     
@@ -54,41 +55,5 @@ class ContactsViewmodel {
         this.lastSavedJson(JSON.stringify(ko.toJS(this.contacts), null, 2));
     }
 }
-/*
-var ContactsModel = function(contacts) {
-    var self = this;
-    self.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function(contact) {
-        return { firstName: contact.firstName, lastName: contact.lastName, phones: ko.observableArray(contact.phones) };
-    }));
- 
-    self.addContact = function() {
-        self.contacts.push({
-            firstName: "",
-            lastName: "",
-            phones: ko.observableArray()
-        });
-    };
- 
-    self.removeContact = function(contact) {
-        self.contacts.remove(contact);
-    };
- 
-    self.addPhone = function(contact) {
-        contact.phones.push({
-            type: "",
-            number: ""
-        });
-    };
- 
-    self.removePhone = function(phone) {
-        $.each(self.contacts(), function() { this.phones.remove(phone) })
-    };
- 
-    self.save = function() {
-        self.lastSavedJson(JSON.stringify(ko.toJS(self.contacts), null, 2));
-    };
- 
-    self.lastSavedJson = ko.observable("")
-};
- */
+
 ko.applyBindings(new ContactsViewmodel(initialData));
