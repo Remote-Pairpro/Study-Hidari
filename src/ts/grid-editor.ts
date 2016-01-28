@@ -1,7 +1,18 @@
 /// <reference path="tsd/typings/knockout/knockout.d.ts" />
 /// <reference path="tsd/typings/jquery/jquery.d.ts" />
 
-var GiftModel:any  = function(gifts) {
+
+/**
+ * GiftViewModel
+ */
+class GiftViewModel {
+    constructor(gifts:any) {
+        this.gifts = gifts
+    }
+    public gifts : KnockoutObservableArray<any>;
+}
+
+var GiftModel = function(gifts) {
     var self = this;
     self.gifts = ko.observableArray(gifts);
  
@@ -23,7 +34,7 @@ var GiftModel:any  = function(gifts) {
     };
 };
  
-var viewModel:any = new GiftModel([
+var viewModel = new GiftModel([
     { name: "高帽子", price: "39.95"},
     { name: "長いクローク", price: "120.00"}
 ]);
