@@ -10,8 +10,23 @@ class GiftViewModel {
         this.gifts = gifts
     }
     public gifts : KnockoutObservableArray<any>;
+    
+    public addGift():void{
+        this.gifts.push({
+            name: "",
+            price:""
+        });
+    }
+    
+    public removeGift = (gift) => {
+        this.gifts.remove(gift);
+    }
+    
+    public save = (form) =>{
+        alert("次のようにサーバに送信できます: " + ko.utils.stringifyJson(this.gifts));
+    }
 }
-
+/*
 var GiftModel = function(gifts) {
     var self = this;
     self.gifts = ko.observableArray(gifts);
@@ -33,13 +48,14 @@ var GiftModel = function(gifts) {
         // ko.utils.postJson($("form")[0], self.gifts);
     };
 };
- 
-var viewModel = new GiftModel([
+ */
+
+var giftViewModel = new GiftViewModel([
     { name: "高帽子", price: "39.95"},
     { name: "長いクローク", price: "120.00"}
 ]);
 
-ko.applyBindings(viewModel, document.getElementById('demo_1'));
+ko.applyBindings(giftViewModel, document.getElementById('demo_1'));
  
 // jQuery Validation を起動
-$("form").validate({ submitHandler: viewModel.save });
+$("form").validate({ submitHandler: giftViewModel.save });
