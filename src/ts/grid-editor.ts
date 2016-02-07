@@ -7,7 +7,7 @@
  */
 class GiftViewModel {
     constructor(gifts:any) {
-        this.gifts = gifts
+        this.gifts = ko.observableArray(gifts);
     }
     public gifts : KnockoutObservableArray<any>;
     
@@ -22,7 +22,7 @@ class GiftViewModel {
         this.gifts.remove(gift);
     }
     
-    public save = (form) =>{
+    public save = (form) => {
         alert("次のようにサーバに送信できます: " + ko.utils.stringifyJson(this.gifts));
     }
 }

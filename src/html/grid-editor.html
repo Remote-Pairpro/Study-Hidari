@@ -1,8 +1,10 @@
 <html>
 	<head>
 		<script type="text/javascript" src="../js/knockout-3.3.0.js"></script>
+        <script type="text/javascript" src="../js/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 	</head>
-	<body>
+   	<body>
         <form action='/someServerSideHandler'>
             <p>欲しいものリスト: <span data-bind='text: gifts().length'>&nbsp;</span> 点</p>
             <table data-bind='visible: gifts().length > 0'>
