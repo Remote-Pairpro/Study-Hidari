@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../js/knockout-3.3.0.js"></script>
+        <script type="text/javascript" src="../js/jquery-2.2.0.min.js"></script>
+  	</head>
+	<body>
+        <table width='100%'>
+            <thead>
+                <tr>
+                    <th width='25%'>カテゴリ</th>
+                    <th width='25%'>製品</th>
+                    <th class='price' width='15%'>価格</th>
+                    <th class='quantity' width='10%'>数量</th>
+                    <th class='price' width='15%'>小計</th>
+                    <th width='10%'> </th>
+                </tr>
+            </thead>
+            <tbody data-bind='foreach: lines'>
+                <tr>
+                    <td>
+                        <select data-bind='options: sampleProductCategories, optionsText: "name", optionsCaption: "選択...", value: category'> </select>
+                    </td>
+                    <td data-bind="with: category">
+                        <select data-bind='options: products, optionsText: "name", optionsCaption: "選択...", value: $parent.product'> </select>
+                    </td>
+                    <td class='price' data-bind='with: product'>
+                        <span data-bind='text: formatCurrency(price)'> </span>
+                    </td>
+                    <td class='quantity'>
+                        <input data-bind='visible: product, value: quantity, valueUpdate: "afterkeydown"' />
+                    </td>
+                    <td class='price'>
+                        <span data-bind='visible: product, text: formatCurrency(subtotal())' > </span>
+                    </td>
+                    <td>
+                        <a href='#' data-bind='click: $parent.removeLine'>削除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class='grandTotal'>
+            合計金額: <span data-bind='text: formatCurrency(grandTotal())'> </span>
+        </p>
+        <button data-bind='click: addLine'>製品を追加</button>
+        <button data-bind='click: save'>注文</button>
+		<script type="text/javascript" src="../ts/cartEditor.js"></script>
+	</body>
+</html>
