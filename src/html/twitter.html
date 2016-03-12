@@ -2,8 +2,45 @@
 	<head>
 		<script type="text/javascript" src="../js/knockout-3.3.0.js"></script>
         <script type="text/javascript" src="../js/jquery-2.2.0.min.js"></script>
-  	</head>
+        <script type="text/javascript" src="../ts/twitterApi.js"></script>
+   	</head>
 	<body>
+        <div class='configuration'>
+            <div class='listChooser'>
+                <button data-bind='click: deleteList, enable: editingList.name'>削除</button>
+                <button data-bind='click: saveChanges, enable: hasUnsavedChanges'>保存</button>
+                <select data-bind='options: savedLists, optionsValue: "name", value: editingList.name'> </select>
+            </div>
+        
+            <p>表示中のユーザアカウント: <span data-bind='text: editingList.userNames().length'> </span> 件</p>
+            <div class='currentUsers' data-bind='with: editingList'>
+                <ul data-bind='foreach: userNames'>
+                    <li>
+                        <button data-bind='click: $root.removeUser'>削除</button>
+                        <div data-bind="text: $data"> </div>
+                    </li>
+                </ul>
+            </div>
+        
+            <form data-bind='submit: addUser'>
+                <label>ユーザアカウントを追加:</label>
+                <input data-bind='value: userNameToAdd, valueUpdate: "keyup", css: { invalid: !userNameToAddIsValid() }' />
+                <button data-bind='enable: canAddUserName' type='submit'>追加</button>
+            </form>
+        </div>
+        <div class='tweets'>
+            <div class='loadingIndicator'>読込中...</div>
+            <table width='100%' data-bind="foreach: currentTweets">
+                <tr>
+                    <td><img data-bind='attr: { src: profile_image_url }' /></td>
+                    <td>
+                        <a class='twitterUser' data-bind='attr: { href: "http://twitter.com/" + from_user }, text: from_user' href='http://twitter.com/${ from_user }' > </a>
+                        <span data-bind="text: text"> </span>
+                        <div class='tweetInfo' data-bind='text: created_at'> </div>
+                    </td>
+                </tr>
+            </table>
+        </div>        
         <script type="text/javascript" src="../ts/twitter.js"></script>
 	</body>
 </html>
