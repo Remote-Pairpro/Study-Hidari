@@ -35,9 +35,9 @@ class TwitterListModel{
             // viewmodel.editingList.name() を監視する。
             // 変更があれば、savedList (=データ元) から一致するリスト名のユーザ名リストを取得し、
             // editingList.userNames にコピーする。
-            var savedList = this.findSavedList(this.editingList.name());
+            let savedList = this.findSavedList(this.editingList.name());
             if (savedList) {
-                var userNamesCopy = savedList.userNames.slice(0);
+                let userNamesCopy = savedList.userNames.slice(0);
                 this.editingList.userNames(userNamesCopy);
             } else {
                 this.editingList.userNames([]);
@@ -48,8 +48,8 @@ class TwitterListModel{
             if (!this.editingList.name()) {
                 return this.editingList.userNames().length > 0;
             }
-            var savedData = this.findSavedList(this.editingList.name()).userNames;
-            var editingData = this.editingList.userNames();
+            let savedData = this.findSavedList(this.editingList.name()).userNames;
+            let editingData = this.editingList.userNames();
             return savedData.join("|") != editingData.join("|");
         }, this);
         
@@ -67,8 +67,8 @@ class TwitterListModel{
         }, this);        
     }
     
-    public findSavedList(name:string){
-        var list = this.savedLists();
+    public findSavedList(name :string): {name:string, userNames:string[]}{
+        let list = this.savedLists();
         return ko.utils.arrayFirst(list, function(list){
             return list.name === name;
         });
@@ -82,11 +82,12 @@ class TwitterListModel{
     }
     
     public removeUser = (userName:string) => {this.editingList.userNames.remove(userName)};
-    public saveChanges(){
-        var saveAs = prompt("次の名前で保存: ", this.editingList.name());
+    
+    public saveChanges():void{
+        let saveAs = prompt("次の名前で保存: ", this.editingList.name());
         if(saveAs){
-            var dataToSave = this.editingList.userNames().slice(0);
-            var existingSavedList = this.findSavedList(saveAs);
+            let dataToSave = this.editingList.userNames().slice(0);
+            let existingSavedList = this.findSavedList(saveAs);
             if(existingSavedList){
                 existingSavedList.userNames = dataToSave;
             }else{
@@ -100,8 +101,8 @@ class TwitterListModel{
     }
     
     public deleteList =　() => {
-        var nameToDelete = this.editingList.name();
-        var savedListsExceptOneToDelete = $.grep(this.savedLists(), function(list) {
+        let nameToDelete = this.editingList.name();
+        let savedListsExceptOneToDelete = $.grep(this.savedLists(), function(list) {
             return list.name != nameToDelete
         });
         this.editingList.name(savedListsExceptOneToDelete.length == 0 ? null : savedListsExceptOneToDelete[0].name);
