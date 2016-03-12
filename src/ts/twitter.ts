@@ -15,7 +15,7 @@ var savedLists: [{name:string, userNames:string[]}] = [
 ];
 
 class TwitterListModel{
-    public savedLists : KnockoutObservableArray<any>;
+    public savedLists : KnockoutObservableArray<{name:string, userNames:string[]}>;
     public editingList : {name:KnockoutObservable<string>, userNames:KnockoutObservableArray<string>};
     public userNameToAdd : KnockoutObservable<string>;
     public currentTweets : KnockoutObservableArray<any>;
@@ -23,11 +23,11 @@ class TwitterListModel{
     public hasUnsavedChanges : KnockoutComputed<boolean>;
     public canAddUserName : KnockoutComputed<boolean>;
     
-    constructor(list, selectedList:string){
+    constructor(list:{name:string, userNames:string[]}[], selectedList:string){
         this.savedLists = ko.observableArray(list);
         this.editingList = {
             name: ko.observable(selectedList),
-            userNames: ko.observableArray([])
+            userNames: ko.observableArray([""])
         };
         this.userNameToAdd = ko.observable("");
         this.currentTweets = ko.observableArray([]);
