@@ -5,12 +5,39 @@
 // そのため常に ViewModel の最新の状態に保たれます。
 // また、ViewModel は View にどのようにバインドされるかを意識せずに記述することができます。
 //
-var savedLists = [
+var savedLists: [{name:string, userNames:string[]}] = [
     { name: "Celebrities", userNames: ['JohnCleese', 'MCHammer', 'StephenFry', 'algore', 'StevenSanderson']},
     { name: "Microsoft people", userNames: ['BillGates', 'shanselman', 'ScottGu']},
     { name: "Tech pundits", userNames: ['Scobleizer', 'LeoLaporte', 'techcrunch', 'BoingBoing', 'timoreilly', 'codinghorror']}
 ];
- 
+
+class TwitterListModel2{
+    public savedLists : KnockoutObservableArray<any>;
+    public editingList : {name:KnockoutObservable<string>, userNames:KnockoutObservableArray<string>};
+    public userNameToAdd : KnockoutObservable<string>;
+    public currentTweets : KnockoutObservableArray<any>;
+    public userNameToAddIsValid : KnockoutComputed<any>;
+    
+    constructor(list, selectedList){
+        
+    }
+    
+    public findSavedList(name:string){
+        var list = this.savedLists();
+        return ko.utils.arrayFirst(list, function(list){
+            return list.name === name;
+        });
+    }
+    
+    public addUser():void{
+        if(this.userNameToAdd() && this.userNameToAddIsValid()){
+            this.editingList.userNames.push(this.userNameToAdd());
+            this.userNameToAdd("");
+        }
+    }
+    
+    public removeUser = (userName:string) => {this.editingList.userNames.remove(userName)}
+}
 var TwitterListModel = function(lists, selectedList) {
     this.savedLists = ko.observableArray(lists);
     this.editingList = {
@@ -19,21 +46,18 @@ var TwitterListModel = function(lists, selectedList) {
     };
     this.userNameToAdd = ko.observable("");
     this.currentTweets = ko.observableArray([])
- 
     this.findSavedList = function(name) {
         var lists = this.savedLists();
         return ko.utils.arrayFirst(lists, function(list) {
             return list.name === name;
         });
     };
- 
     this.addUser = function() {
         if (this.userNameToAdd() && this.userNameToAddIsValid()) {
             this.editingList.userNames.push(this.userNameToAdd());
             this.userNameToAdd("");
         }
     };
- 
     this.removeUser = function(userName) {
         this.editingList.userNames.remove(userName)
     }.bind(this);
