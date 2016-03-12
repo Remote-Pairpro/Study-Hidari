@@ -19,9 +19,9 @@ class TwitterListModel{
     public editingList : {name:KnockoutObservable<string>, userNames:KnockoutObservableArray<string>};
     public userNameToAdd : KnockoutObservable<string>;
     public currentTweets : KnockoutObservableArray<any>;
-    public userNameToAddIsValid : KnockoutComputed<any>;
-    public hasUnsavedChanges : KnockoutComputed<any>;
-    public canAddUserName : KnockoutComputed<any>;
+    public userNameToAddIsValid : KnockoutComputed<boolean>;
+    public hasUnsavedChanges : KnockoutComputed<boolean>;
+    public canAddUserName : KnockoutComputed<boolean>;
     
     constructor(list, selectedList:string){
         this.savedLists = ko.observableArray(list);
