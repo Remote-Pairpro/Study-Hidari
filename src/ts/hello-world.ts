@@ -1,4 +1,5 @@
-/// <reference path="tsd/typings/knockout/knockout.d.ts" />
+/// <reference path="../typings/main.d.ts" />
+
 // ViewModel を定義します
 class HelloWorldViewModel{
     public firstName:KnockoutObservable<string>;

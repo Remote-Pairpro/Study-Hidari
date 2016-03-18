@@ -1,4 +1,4 @@
-/// <reference path="tsd/typings/knockout/knockout.d.ts" />
+/// <reference path="../typings/main.d.ts" />
 
 /**
  * PersonModel

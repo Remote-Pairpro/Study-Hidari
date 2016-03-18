@@ -1,0 +1,8 @@
+{
+  "version": false,
+  "ambientDependencies": {
+    "knockout": "github:DefinitelyTyped/DefinitelyTyped/knockout/knockout.d.ts#6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#e69fe60f2d6377ea4fae539493997b098f52cad1",
+    "jquery.validation": "github:DefinitelyTyped/DefinitelyTyped/jquery.validation/jquery.validation.d.ts#e69fe60f2d6377ea4fae539493997b098f52cad1"
+  }
+}

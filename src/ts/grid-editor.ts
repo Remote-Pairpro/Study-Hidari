@@ -1,6 +1,4 @@
-/// <reference path="tsd/typings/knockout/knockout.d.ts" />
-/// <reference path="tsd/typings/jquery/jquery.d.ts" />
-/// <reference path="tsd/typings/jquery.validation/jquery.validation.d.ts" />
+/// <reference path="../typings/main.d.ts" />
 
 /**
  * GiftViewModel

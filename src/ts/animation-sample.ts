@@ -1,5 +1,5 @@
-/// <reference path="tsd/typings/knockout/knockout.d.ts" />
-/// <reference path="tsd/typings/jQuery/jQuery.d.ts" />
+/// <reference path="../typings/main.d.ts" />
+
 
 /**
  * Planets

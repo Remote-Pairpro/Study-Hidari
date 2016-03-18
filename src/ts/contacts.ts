@@ -1,5 +1,4 @@
-/// <reference path="tsd/typings/knockout/knockout.d.ts" />
-/// <reference path="tsd/typings/jquery/jquery.d.ts" />
+/// <reference path="../typings/main.d.ts" />
 
 var initialData = [
     { firstName: "ダニー", lastName: "ラルッソ", phones: [
