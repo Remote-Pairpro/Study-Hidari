@@ -1,4 +1,4 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="../../typings/main.d.ts" />
 
 // ViewModel は作業中のすべての状態を保持します。また、それらを編集できるようにする方法も持っており、
 // さらに必要な状態を背後のデータから計算するために Computed Observable を使用しています。

@@ -1,4 +1,4 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="../../typings/main.d.ts" />
 
 var initialData = [
     { firstName: "ダニー", lastName: "ラルッソ", phones: [
