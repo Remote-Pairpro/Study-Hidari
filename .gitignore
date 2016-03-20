@@ -1,9 +1,8 @@
+# transpiled js
+src/js/
+
 # Dependency directory
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-
-# transpiled js
-/**/src/ts/*.js
-/**/src/ts/*.js.map
-*.d.ts
+# Type definitions directory
+typings
