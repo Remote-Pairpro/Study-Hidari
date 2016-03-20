@@ -4,9 +4,11 @@
         "target": "es5",
         "noImplicitAny": false,
         "removeComments": false,
+        "outDir": "src/js",
         "sourceMap": true
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "typings"
     ]
 }
