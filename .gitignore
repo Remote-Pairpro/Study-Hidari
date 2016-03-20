@@ -6,3 +6,5 @@ node_modules
 
 # Type definitions directory
 typings
+
+npm-debug.log

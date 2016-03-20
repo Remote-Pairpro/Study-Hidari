@@ -1,9 +1,5 @@
 /// <reference path="../../typings/main.d.ts" />
 
-
-/**
- * Planets
- */
 class PlanetsModel {
     public planets: KnockoutObservableArray<{name:string, type:string}>;
     public typeToShow: KnockoutObservable<string>;
@@ -30,15 +26,12 @@ class PlanetsModel {
             // 惑星のリストを 条件 "typeToShow" でフィルタリングします。
             var desiredType = this.typeToShow();
             if (desiredType == "all") return this.planets();
-            return ko.utils.arrayFilter(this.planets(), function(planet) {
+            return ko.utils.arrayFilter(this.planets(), function(planet:any) {
                 return planet.type == desiredType;
             });
         }, this);
     }
-    
-    /**
-     * addPlanet
-     */
+
     public addPlanet(type: string):void {
         this.planets.push({
             name: "新惑星",
